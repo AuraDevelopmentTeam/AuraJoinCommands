@@ -3,6 +3,7 @@ package dev.aura.joincommands;
 import com.google.common.reflect.TypeToken;
 import com.google.inject.Inject;
 import dev.aura.joincommands.config.Config;
+import dev.aura.joincommands.permission.PermissionRegistry;
 import dev.aura.lib.messagestranslator.MessagesTranslator;
 import dev.aura.lib.messagestranslator.PluginMessagesTranslator;
 import java.io.File;
@@ -70,7 +71,7 @@ public class AuraJoinCommands {
   protected Path configDir;
 
   @NonNull protected Config config;
-  //  protected PermissionRegistry permissionRegistry;
+  protected PermissionRegistry permissionRegistry;
   @NonNull protected MessagesTranslator translator;
 
   protected List<Object> eventListeners = new LinkedList<>();
@@ -112,10 +113,10 @@ public class AuraJoinCommands {
 
     loadConfig();
 
-    //    if (permissionRegistry == null) {
-    //      permissionRegistry = new PermissionRegistry(this);
-    //      logger.debug("Registered permissions");
-    //    }
+    if (permissionRegistry == null) {
+      permissionRegistry = new PermissionRegistry(this);
+      logger.debug("Registered permissions");
+    }
 
     translator =
         new PluginMessagesTranslator(
