@@ -1,11 +1,14 @@
 package dev.aura.joincommands;
 
+import com.google.common.reflect.TypeToken;
 import com.google.inject.Inject;
+import dev.aura.joincommands.config.Config;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import lombok.Getter;
 import lombok.NonNull;
+import ninja.leaping.configurate.ConfigurationOptions;
 import ninja.leaping.configurate.commented.CommentedConfigurationNode;
 import ninja.leaping.configurate.loader.ConfigurationLoader;
 import ninja.leaping.configurate.objectmapping.GuiceObjectMapperFactory;
@@ -56,7 +59,7 @@ public class AuraJoinCommands {
   @DefaultConfig(sharedRoot = false)
   protected ConfigurationLoader<CommentedConfigurationNode> loader;
 
-  //  @NonNull protected Config config;
+  @NonNull protected Config config;
   //  protected PermissionRegistry permissionRegistry;
 
   protected List<Object> eventListeners = new LinkedList<>();
@@ -71,9 +74,9 @@ public class AuraJoinCommands {
     return instance.logger;
   }
 
-  //  public static Config getConfig() {
-  //    return instance.config;
-  //  }
+  public static Config getConfig() {
+    return instance.config;
+  }
 
   @Listener
   public void init(GameInitializationEvent event) throws IOException, ObjectMappingException {
@@ -88,7 +91,7 @@ public class AuraJoinCommands {
       logger.info("Things might not work properly!");
     }
 
-    //    loadConfig();
+    loadConfig();
 
     //    if (permissionRegistry == null) {
     //      permissionRegistry = new PermissionRegistry(this);
@@ -104,20 +107,20 @@ public class AuraJoinCommands {
     logger.info("Loaded successfully!");
   }
 
-  //  private void loadConfig() throws IOException, ObjectMappingException {
-  //    final TypeToken<Config> configToken = TypeToken.of(Config.class);
-  //
-  //    logger.debug("Loading config...");
-  //
-  //    CommentedConfigurationNode node =
-  //        loader.load(ConfigurationOptions.defaults().setObjectMapperFactory(factory));
-  //
-  //    config = node.<Config>getValue(configToken, Config::new);
-  //
-  //    logger.debug("Saving/Formatting config...");
-  //    node.setValue(configToken, config);
-  //    loader.save(node);
-  //  }
+  private void loadConfig() throws IOException, ObjectMappingException {
+    final TypeToken<Config> configToken = TypeToken.of(Config.class);
+
+    logger.debug("Loading config...");
+
+    CommentedConfigurationNode node =
+        loader.load(ConfigurationOptions.defaults().setObjectMapperFactory(factory));
+
+    config = node.<Config>getValue(configToken, Config::new);
+
+    logger.debug("Saving/Formatting config...");
+    node.setValue(configToken, config);
+    loader.save(node);
+  }
 
   @Listener
   public void reload(GameReloadEvent event) throws Exception {
