@@ -3,7 +3,11 @@ package dev.aura.joincommands;
 import com.google.common.reflect.TypeToken;
 import com.google.inject.Inject;
 import dev.aura.joincommands.config.Config;
+import dev.aura.lib.messagestranslator.MessagesTranslator;
+import dev.aura.lib.messagestranslator.PluginMessagesTranslator;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;
 import lombok.Getter;
@@ -17,6 +21,7 @@ import org.bstats.sponge.MetricsLite2;
 import org.slf4j.Logger;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.command.CommandManager;
+import org.spongepowered.api.config.ConfigDir;
 import org.spongepowered.api.config.DefaultConfig;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.SpongeEventFactory;
@@ -59,8 +64,14 @@ public class AuraJoinCommands {
   @DefaultConfig(sharedRoot = false)
   protected ConfigurationLoader<CommentedConfigurationNode> loader;
 
+  @Inject
+  @ConfigDir(sharedRoot = false)
+  @NonNull
+  protected Path configDir;
+
   @NonNull protected Config config;
   //  protected PermissionRegistry permissionRegistry;
+  @NonNull protected MessagesTranslator translator;
 
   protected List<Object> eventListeners = new LinkedList<>();
 
@@ -76,6 +87,14 @@ public class AuraJoinCommands {
 
   public static Config getConfig() {
     return instance.config;
+  }
+
+  public static Path getConfigDir() {
+    return instance.configDir;
+  }
+
+  public static MessagesTranslator getTranslator() {
+    return instance.translator;
   }
 
   @Listener
@@ -97,6 +116,10 @@ public class AuraJoinCommands {
     //      permissionRegistry = new PermissionRegistry(this);
     //      logger.debug("Registered permissions");
     //    }
+
+    translator =
+        new PluginMessagesTranslator(
+            new File(getConfigDir().toFile(), "lang"), config.getGeneral().getLanguage(), this, ID);
 
     //    CommandBase.register(this);
     //    logger.debug("Registered commands");

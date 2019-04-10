@@ -1,6 +1,7 @@
 package dev.aura.joincommands.config;
 
 import com.google.common.collect.ImmutableList;
+import dev.aura.lib.messagestranslator.MessagesTranslator;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,13 +25,12 @@ public class Config {
     @Setting(comment = "Enable debug logging")
     private boolean debug = false;
 
-    //    @Setting(
-    //      comment =
-    //          "Select which language from the lang dir to use.\n"
-    //              + "You can add your own translations in there. If you name your file
-    // \"test.lang\", choose \"test\" here."
-    //    )
-    //    private String language = MessagesTranslator.DEFAULT_LANGUAGE;
+    @Setting(
+      comment =
+          "Select which language from the lang dir to use.\n"
+              + "You can add your own translations in there. If you name your file \"test.lang\", choose \"test\" here."
+    )
+    private String language = MessagesTranslator.DEFAULT_LANGUAGE;
   }
 
   @ConfigSerializable
