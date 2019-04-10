@@ -2,6 +2,7 @@ package dev.aura.joincommands;
 
 import com.google.common.reflect.TypeToken;
 import com.google.inject.Inject;
+import dev.aura.joincommands.command.CommandBase;
 import dev.aura.joincommands.config.Config;
 import dev.aura.joincommands.permission.PermissionRegistry;
 import dev.aura.lib.messagestranslator.MessagesTranslator;
@@ -122,8 +123,8 @@ public class AuraJoinCommands {
         new PluginMessagesTranslator(
             new File(getConfigDir().toFile(), "lang"), config.getGeneral().getLanguage(), this, ID);
 
-    //    CommandBase.register(this);
-    //    logger.debug("Registered commands");
+    CommandBase.register(this);
+    logger.debug("Registered commands");
 
     //    addEventListener(new PlayerEvents());
     logger.debug("Registered events");

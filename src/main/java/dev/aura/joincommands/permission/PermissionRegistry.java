@@ -1,6 +1,7 @@
 package dev.aura.joincommands.permission;
 
 import dev.aura.joincommands.AuraJoinCommands;
+import dev.aura.joincommands.command.CommandReload;
 import edu.umd.cs.findbugs.annotations.Nullable;
 import lombok.RequiredArgsConstructor;
 import org.spongepowered.api.Sponge;
@@ -21,6 +22,10 @@ public class PermissionRegistry {
   public void registerPermissions() {
     registerPermission(BASE, PermissionDescription.ROLE_ADMIN);
     registerPermission(COMMAND, "Permission for all commands", PermissionDescription.ROLE_ADMIN);
+    registerPermission(
+        CommandReload.RELOAD_PERMISSION,
+        "Permission for the \"/joincommands reload\" command",
+        PermissionDescription.ROLE_ADMIN);
   }
 
   private Builder getBuilder() {
