@@ -30,5 +30,5 @@ inherit: en_US
 ####################################################################################################
 # Admin Messages
 ####################################################################################################
-reloadSuccessful: "&aAuraBlockLimit erfolgreich neu geladen!"
+reloadSuccessful: "&aAuraJoinCommands erfolgreich neu geladen!"
 reloadNotSuccessful: "&cFehler beim Neuladen des Plugins: %error%\n&cEine detailliertere Fehlermeldung findest du in der Konsole.\n&cDas Plugin kann sich in einem stark beschädigten Zustand befinden. Es ist am besten, den Server neu zu starten!"

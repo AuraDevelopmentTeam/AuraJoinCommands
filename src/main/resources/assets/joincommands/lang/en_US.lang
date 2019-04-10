@@ -30,5 +30,5 @@
 ####################################################################################################
 # Admin Messages
 ####################################################################################################
-reloadSuccessful: "&aAuraBlockLimit reloaded successfully!"
+reloadSuccessful: "&aAuraJoinCommands reloaded successfully!"
 reloadNotSuccessful: "&cError while reloading the plugin: %error%\n&cSee console for a more detailed error message.\n&cThe plugin may be in a severely corrupted state. It's best to restart the server!"
