@@ -32,13 +32,27 @@ public class PlayerEvents {
     final Player player = event.getTargetEntity();
     final boolean firstJoin = !player.hasPlayedBefore();
 
+    final String playerString = player.getName() + '(' + player.getUniqueId().toString() + ')';
+
+    logDebug((firstJoin ? "New p" : "P") + "layer " + playerString + " is joining");
+
     if (firstJoin) {
+      logDebug("Executing first join commands...");
+
       executeCommands(player, config.getFirstJoinCommands());
+
+      logTrace("Executed first join commands!");
     }
 
     if (!firstJoin || config.getNormalJoinOnFirstJoin()) {
+      logDebug("Executing join commands...");
+
       executeCommands(player, config.getJoinCommands());
+
+      logTrace("Executed join commands!");
     }
+
+    logTrace("Finished login of " + playerString);
   }
 
   private final void executeCommands(Player player, List<String> commands) {
@@ -54,11 +68,11 @@ public class PlayerEvents {
               + ')';
 
       try {
-        logDebug("Executing" + commandLog + "...");
+        logDebug("    Executing" + commandLog + "...");
 
         commandManager.process(console, processedCommand);
 
-        logTrace("Executed" + commandLog + " successfully!");
+        logTrace("    Executed" + commandLog + " successfully!");
       } catch (RuntimeException e) {
         logger.warn("Error while executing" + commandLog + '!', e);
       }
