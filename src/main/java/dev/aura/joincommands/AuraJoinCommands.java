@@ -4,6 +4,7 @@ import com.google.common.reflect.TypeToken;
 import com.google.inject.Inject;
 import dev.aura.joincommands.command.CommandBase;
 import dev.aura.joincommands.config.Config;
+import dev.aura.joincommands.event.PlayerEvents;
 import dev.aura.joincommands.permission.PermissionRegistry;
 import dev.aura.lib.messagestranslator.MessagesTranslator;
 import dev.aura.lib.messagestranslator.PluginMessagesTranslator;
@@ -126,7 +127,7 @@ public class AuraJoinCommands {
     CommandBase.register(this);
     logger.debug("Registered commands");
 
-    //    addEventListener(new PlayerEvents());
+    addEventListener(new PlayerEvents());
     logger.debug("Registered events");
 
     logger.info("Loaded successfully!");
