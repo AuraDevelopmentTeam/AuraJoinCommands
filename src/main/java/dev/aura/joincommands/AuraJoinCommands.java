@@ -179,7 +179,7 @@ public class AuraJoinCommands {
     removeEventListeners();
     logger.debug("Unregistered events");
 
-    //    config = null;
+    config = null;
     logger.debug("Unloaded config");
 
     logger.info("Unloaded successfully!");
