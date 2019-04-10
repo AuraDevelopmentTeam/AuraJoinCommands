@@ -1,7 +1,10 @@
 # [AuraJoinCommands](https://github.com/AuraDevelopmentTeam/AuraJoinCommands)
 
+[![Current Version](https://badge.fury.io/gh/AuraDevelopmentTeam%2FAuraJoinCommands.svg)](https://maven.aura-dev.team/service/rest/repository/browse/auradev-releases/dev/aura/joincommands/AuraJoinCommands/)
 [![Build Status](https://gitlab.aura-dev.team/AuraDev/AuraJoinCommands/badges/master/build.svg)](https://gitlab.aura-dev.team/AuraDev/AuraJoinCommands/pipelines)
 [![Coverage Report](https://gitlab.aura-dev.team/AuraDev/AuraJoinCommands/badges/master/coverage.svg)](https://gitlab.aura-dev.team/AuraDev/AuraJoinCommands/pipelines)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6ea008aa3b5a496793e468968f10fce0)](https://www.codacy.com/app/AuraDevelopmentTeam/AuraJoinCommands?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AuraDevelopmentTeam/AuraJoinCommands&amp;utm_campaign=Badge_Grade)
+[![License](https://img.shields.io/github/license/AuraDevelopmentTeam/AuraJoinCommands.svg)](https://github.com/AuraDevelopmentTeam/AuraJoinCommands/blob/master/LICENSE)
 
 Simple plugin to limit how many of a type of block a player can place
 
