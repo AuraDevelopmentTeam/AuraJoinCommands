@@ -41,22 +41,26 @@ public class Config {
     @Setting(
       comment =
           "Specify the list of all commands that should be executed when a player first joins.\n"
-              + "You can use the placeholders `%player%` and `%uuid%` (without the `s) for the player name and their UUID respectively."
+              + "You can use the placeholders `%player%` and `%uuid%` (without the `s) for the player name and their UUID respectively.\n"
+              + "Be aware, that you need to escape the commands! If you're not sure how to do that, use this tool:\n"
+              + "https://www.freeformatter.com/java-dotnet-escape.html"
     )
     private List<String> firstJoinCommands =
         ImmutableList.of(
-            "title %player% subtitle {text:\"Nice to see you here!\"}",
-            "title %player% title {text:\"Welcome %player%!\"}");
+            "title %player% subtitle {\"text\":\"Nice to see you here!\"}",
+            "title %player% title {\"text\":\"Welcome %player%!\"}");
 
     @Setting(
       comment =
           "Specify the list of all commands that should be executed when a player joins.\n"
-              + "You can use the placeholders `%player%` and `%uuid%` (without the `s) for the player name and their UUID respectively."
+              + "You can use the placeholders `%player%` and `%uuid%` (without the `s) for the player name and their UUID respectively.\n"
+              + "Be aware, that you need to escape the commands! If you're not sure how to do that, use this tool:\n"
+              + "https://www.freeformatter.com/java-dotnet-escape.html"
     )
     private List<String> joinCommands =
         ImmutableList.of(
-            "title %player% subtitle {text:\"Nice to see you here again!\"}",
-            "title %player% title {text:\"Welcome back %player%!\"}");
+            "title %player% subtitle {\"text\":\"Nice to see you here again!\"}",
+            "title %player% title {\"text\":\"Welcome back %player%!\"}");
 
     @Setting(
       comment =
