@@ -14,6 +14,8 @@ public class CommandBase {
         CommandSpec.builder()
             .description(Text.of("Base command for the plugin. Does nothing on its own."))
             .child(CommandReload.create(plugin), "reload", "r", "rl", "re", "rel")
+            // Just to declutter the tab completion
+            .permission(CommandReload.RELOAD_PERMISSION)
             .build();
 
     Sponge.getCommandManager()
